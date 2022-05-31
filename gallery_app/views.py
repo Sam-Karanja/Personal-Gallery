@@ -31,5 +31,5 @@ def location_results(request):
 
 
 def photo(request,photo_id):
-    photos = Image.objects.get(id=photo_id)
-    return render(request,"all-photos/category.html",{"photos":photos}) 
+    photo = Image.objects.get(id=photo_id)
+    return render(request,"all-photos/image.html",{"photo":photo}) 
