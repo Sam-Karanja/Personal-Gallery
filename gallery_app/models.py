@@ -1,4 +1,3 @@
-from email.mime import image
 from django.db import models
 
 
@@ -37,6 +36,16 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
+
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def all_images(cls,category):
+        images = cls.objects.filter(category__in=category)
+        return images
+
+
     @classmethod
     def current_images(cls,location):
         images = cls.objects.filter(location_in= location)
@@ -45,4 +54,6 @@ class Image(models.Model):
     @classmethod
     def search_by_name(cls, search_term):
         images = cls.objects.filter(name_icontains = search_term)
+        return images
+        images = cls.objects.filter(category_name__icontains=search_term)
         return images
