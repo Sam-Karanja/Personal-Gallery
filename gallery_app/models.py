@@ -1,3 +1,4 @@
+from email.mime import image
 from django.db import models
 
 
@@ -27,8 +28,8 @@ class Image(models.Model):
     name = models.CharField(max_length=35)
     description=models.CharField(max_length=200)
     my_image = models.ImageField(upload_to ='', blank=True)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
-    location = models.ForeignKey(Location,on_delete=models.CASCADE,null=True)
+    category = models.ForeignKey(category,on_delete=models.CASCADE,null=True)
+    location = models.ForeignKey(location,on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return self.name
@@ -39,4 +40,9 @@ class Image(models.Model):
     @classmethod
     def current_images(cls,location):
         images = cls.objects.filter(location_in= location)
+        return images
+
+    @classmethod
+    def search_by_name(cls, search_term):
+        images = cls.objects.filter(name_icontains = search_term)
         return images
