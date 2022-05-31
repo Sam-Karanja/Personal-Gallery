@@ -1,4 +1,5 @@
 %load bootstrap4%
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,15 @@
     {% endif %}
     {% block styles %}
       {% bootstrap_css %}
+       <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}  
 </head>
 <body>
     {% include 'navbar.html'%}
        {% block content %}
+        {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
      <h2 class="text-center"> this gotta be amazing </h2>
      <h5 class="text-center"> “A picture can tell a thousand words,
          but a few words can change it’s story.” </h5>
