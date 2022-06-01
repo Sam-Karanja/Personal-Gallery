@@ -1,7 +1,6 @@
 {% extends 'all-photos/base.html' %} {% block content %} {{ block.super }}
 <div class="container">
   {% for photo in photos %}
-  <div class="row"></div>
   <div class="card" style="width: 24rem">
     <div class="card-header text-center"><b>{{photo.location}}</b></div>
     <img
