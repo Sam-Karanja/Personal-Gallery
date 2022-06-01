@@ -25,6 +25,14 @@
       </div>
     </div>
     {% endfor %}
+        {%block script%}
+  <script>
+ copyLink = (element) => {
+ document.getElementById(element).select();
+ document.execCommand("copy");
+                                                            }
+ </script>
+  {%endblock%}
   </div>
   {% endblock %}
 </div>
